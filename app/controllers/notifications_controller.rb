@@ -7,6 +7,12 @@ class NotificationsController < ApplicationController
   def create
     @notification = Notification.new(notification_params)
 
+    if @notification.to_number
+      @notification.text
+    else
+      redirect_to :new
+    end
+
     # Do some stuff that checks whether the Notification has
     # the info you need, then sends it! Otherwise, display errors
     # to the user!

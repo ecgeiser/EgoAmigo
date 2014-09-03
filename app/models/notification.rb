@@ -1,20 +1,35 @@
 require 'twilio-ruby'
+require_relative '../../credentials'
 
 class Notification
   attr_accessor :to_number
 
-  def initialize
-    account_sid = "YOUR_ACCOUNT_SID"
-    auth_token = "YOUR_AUTH_TOKEN"
+  def initialize(options={})
+    self.to_number = options[:to_number]
+    account_sid = Credentials.credentials[:twilio_account_sid]
+    auth_token = Credentials.credentials[:twilio_account_token]
     @client = Twilio::REST::Client.new(account_sid, auth_token)
   end
 
   def text
-    # Sends a text to your phone number
+    message = @client.account.messages.create(
+      :body => random_compliment,
+      :to => self.to_number,
+      :from => "+17039910311")
+    
+    puts message.to
   end
 
   def random_compliment
-    # Generates a random compliment to send to the textee
+    compliments = [
+      "Your instructors love you",
+      "You are magnificent",
+      "Your code is so dry it makes me thirsty",
+      "Your code is so RESTful it makes Sleeping Beauty look like an insomniac",
+      "*clap*"
+    ]
+
+    @compliment = compliments.sample
   end
 
 end

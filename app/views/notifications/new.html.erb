@@ -1,0 +1,6 @@
+<h1>Compliment Texter</h1>
+
+<%= form_tag("/notifications", method: "post") do %>
+	<%= telephone_field(:notification, :to_number) %>
+  <%= submit_tag("Send Random Compliment!") %>
+<% end %>
