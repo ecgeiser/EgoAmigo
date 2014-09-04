@@ -1,6 +1,13 @@
-<h1>Compliment Texter</h1>
+<h1>EgoAmigo</h1>
+<h2>send Erica a compliment. por favor?</h2>
 
+<div id='form'>
 <%= form_tag("/notifications", method: "post") do %>
-	<%= telephone_field(:notification, :to_number) %>
-  <%= submit_tag("Send Random Compliment!") %>
+	<div>
+		<input name="utf8" type="hidden" value="&#x2713;" />
+    <input name="authenticity_token" type="hidden" value="f755bb0ed134b76c432144748a6d4b7a7ddf2b71" />
+	</div>
+	to: <%= telephone_field(:notification, :to_number) %><br>
+	<%= submit_tag("Send Random Compliment", class: "button")  %><br>
 <% end %>
+</div>

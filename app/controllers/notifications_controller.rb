@@ -9,15 +9,11 @@ class NotificationsController < ApplicationController
 
     if @notification.to_number
       @notification.text
+      flash[:notice] = "Mensaje enviado. ¡Gracias, amigo!"
+      redirect_to new_notification_path
     else
       redirect_to :new
     end
-
-    # Do some stuff that checks whether the Notification has
-    # the info you need, then sends it! Otherwise, display errors
-    # to the user!
-
-    redirect_to new_notification_path
   end
 
   private
