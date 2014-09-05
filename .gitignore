@@ -17,3 +17,6 @@
 
 # Ignore credentials
 /credentials.rb
+
+#Ignore secrets
+/config/secrets.yml
